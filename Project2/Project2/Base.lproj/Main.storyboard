@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NdW-YT-SdP">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRU-Tm-WC8">
+                                <rect key="frame" x="87.5" y="114" width="200" height="100"/>
+                                <state key="normal" backgroundImage="estonia"/>
+                                <connections>
+                                    <action selector="onFlagBtnTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KXx-fL-5df"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTE-si-yQY">
+                                <rect key="frame" x="87.5" y="264" width="200" height="100"/>
+                                <state key="normal" backgroundImage="estonia"/>
+                                <connections>
+                                    <action selector="onFlagBtnTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PS4-VR-QlC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNf-W8-34F">
+                                <rect key="frame" x="87.5" y="414" width="200" height="100"/>
+                                <state key="normal" backgroundImage="estonia"/>
+                                <connections>
+                                    <action selector="onFlagBtnTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QOr-Qy-fqP"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4OJ-Or-Bbc">
+                                <rect key="frame" x="187.5" y="564" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="BNf-W8-34F" firstAttribute="top" secondItem="bTE-si-yQY" secondAttribute="bottom" constant="50" id="2HT-3r-o1b"/>
+                            <constraint firstItem="4OJ-Or-Bbc" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="3Fp-iG-5h6"/>
+                            <constraint firstItem="4OJ-Or-Bbc" firstAttribute="top" secondItem="BNf-W8-34F" secondAttribute="bottom" constant="50" id="7qN-rz-iVD"/>
+                            <constraint firstItem="bTE-si-yQY" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="AF9-Lf-Ol9"/>
+                            <constraint firstItem="wRU-Tm-WC8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="QPh-Wh-zhZ"/>
+                            <constraint firstItem="bTE-si-yQY" firstAttribute="top" secondItem="wRU-Tm-WC8" secondAttribute="bottom" constant="50" id="d0H-58-wOX"/>
+                            <constraint firstItem="wRU-Tm-WC8" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fZd-T9-72S"/>
+                            <constraint firstItem="BNf-W8-34F" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="pMO-zZ-sK8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cQn-xw-3gk"/>
+                    <connections>
+                        <outlet property="flagBtn1" destination="wRU-Tm-WC8" id="BZS-XC-Wc4"/>
+                        <outlet property="flagBtn2" destination="bTE-si-yQY" id="FQy-cw-4yx"/>
+                        <outlet property="flagBtn3" destination="BNf-W8-34F" id="KJq-Tf-9wG"/>
+                        <outlet property="scoreLabel" destination="4OJ-Or-Bbc" id="emn-Cc-Pn2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="976.79999999999995" y="26.53673163418291"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LcD-mK-Ecp">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NdW-YT-SdP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jYp-pp-MlX">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="zdR-gs-RRT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SLU-LZ-D4z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="201" y="27"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="estonia" width="200" height="100"/>
+    </resources>
+</document>
