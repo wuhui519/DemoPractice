@@ -100,7 +100,7 @@ func getHaterStatus(weather: WeatherType) -> String? {
     }
 }
 getHaterStatus(weather: .windy(speed: 3))
-
+`
 struct Person {
     var clothes: String
     var shoes: String
