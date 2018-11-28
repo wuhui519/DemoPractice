@@ -34,7 +34,6 @@ class ViewController: UITableViewController {
     }
     
     // MARK: - action
-
     @objc private func replayBtnTapped() {
         chooseTheWord()
     }
@@ -76,7 +75,17 @@ class ViewController: UITableViewController {
         }
     }
     
+    // letters contain in title
     func isResultPossible(_ result: String) -> Bool {
+        var titleString = title!
+        for letter in result {
+            if let index = titleString.firstIndex(of: letter) {
+                titleString.remove(at: index)
+            }
+            else {
+                return false
+            }
+        }
         return true
     }
     
