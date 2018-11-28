@@ -12,6 +12,8 @@ class ViewController: UITableViewController {
     
     var allWords = [String]()
     var usedWords = [String]()
+    // lazy init
+    lazy var textCheck = UITextChecker()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,17 +38,20 @@ class ViewController: UITableViewController {
     // MARK: - action
     @objc private func replayBtnTapped() {
         chooseTheWord()
+        usedWords.removeAll()
+        tableView.reloadData()
     }
     
     @objc private func addBtnTapped() {
         let alert = UIAlertController(title: "Enter answer", message: nil, preferredStyle: .alert)
         alert.addTextField(configurationHandler: nil)
-        alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: { (_) in
+        // This is new!! -- unowned
+        alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: { [unowned self, alert] (_) in
             if let text = alert.textFields?.first?.text {
                 self.checkResult(text)
             }
         }))
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     
@@ -54,8 +59,11 @@ class ViewController: UITableViewController {
     private func loadData() {
         // This is new!!
         let path = Bundle.main.path(forResource: "start", ofType: "txt")!
-        let content = try! String(contentsOfFile: path)
-        allWords = content.components(separatedBy: CharacterSet.whitespacesAndNewlines)
+        if let content = try? String(contentsOfFile: path) {
+            allWords = content.components(separatedBy: CharacterSet.whitespacesAndNewlines)
+        } else {
+            allWords = ["silkworm"]
+        }
     }
     
     private func chooseTheWord() {
@@ -65,36 +73,57 @@ class ViewController: UITableViewController {
     }
     
     func checkResult(_ result: String) {
-        if self.isResultPossible(result) {
-            if self.isResultUsed(result) {
-                if self.isResultValid(result) {
+        let lowerResult = result.lowercased()
+        if isResultPossible(lowerResult) {
+            if isResultOriginal(lowerResult) {
+                if isResultValid(lowerResult) {
                     usedWords.append(result)
-                    tableView.reloadData()
+                    tableView.insertRows(at: [IndexPath(row: usedWords.count - 1, section: 0)], with: .automatic)
+                } else {
+                    showAlert(title: "Word not recognized", message: "You can't just make them up, you know!")
                 }
+            } else {
+                showAlert(title: "Word used already", message: "Be more original!")
             }
+        } else {
+            showAlert(title: "Word not possible", message: "You can't spell that word from '\(title!)'!")
         }
+    }
+    
+    func showAlert(title aTitle:String, message aMessage:String) {
+        let alert = UIAlertController(title: aTitle, message: aMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion:nil)
     }
     
     // letters contain in title
     func isResultPossible(_ result: String) -> Bool {
         var titleString = title!
         for letter in result {
-            if let index = titleString.firstIndex(of: letter) {
-                titleString.remove(at: index)
-            }
-            else {
+            // my way of computing word in title
+//            if let index = titleString.firstIndex(of: letter) {
+//                titleString.remove(at: index)
+            // their way
+            if let range = titleString.range(of: String(letter)) {
+                titleString.remove(at: range.lowerBound)
+            } else {
                 return false
             }
         }
         return true
     }
     
-    func isResultUsed(_ result: String) -> Bool {
-        return true
+    func isResultOriginal(_ result: String) -> Bool {
+        return !usedWords.contains(result)
     }
     
     func isResultValid(_ result: String) -> Bool {
-        return true
+        // why result.utf16?
+        // Swift strings count things like emoji as 1-letter strings, but UTF-16 considers them to be 2-letter strings.
+        // This means if you use count with UIKit methods, you run the risk of miscounting the string length.
+        let range = NSMakeRange(0, result.utf16.count)
+        let misspelledRange = textCheck.rangeOfMisspelledWord(in: result, range: range, startingAt: 0, wrap: true, language: "en")
+        return misspelledRange.location == NSNotFound
     }
 
 

@@ -1,6 +1,11 @@
 import UIKit
 
 var str = "Hello, playground"
+let range = NSMakeRange(0, str.count)
+let range2 = NSRangeFromString(str)
+
+
+
 var array:[Any] = [1, 2, 3, 4, 5, "abc"]
 array[0]
 type(of: array)
