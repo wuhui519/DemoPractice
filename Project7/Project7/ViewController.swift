@@ -22,8 +22,9 @@ class ViewController: UITableViewController {
     // MARK: - private
     
     func loadRequest(_ url: String) {
-        
-    }
+        urlString = "https://api.whitehouse.gov/v1/petitions.json?limit=100"
+    } else {
+    urlString = "https://api.whitehouse.gov/v1/petitions.json?signatureCountFloor=10000&limit=100"    }
     
     // MARK: - tableview delegate
     
@@ -35,6 +36,12 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return nil
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    
 
 }
 
