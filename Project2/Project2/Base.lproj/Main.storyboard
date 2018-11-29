@@ -19,28 +19,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRU-Tm-WC8">
-                                <rect key="frame" x="87.5" y="114" width="200" height="100"/>
-                                <state key="normal" backgroundImage="estonia"/>
+                                <rect key="frame" x="153.5" y="114" width="68" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wRU-Tm-WC8" secondAttribute="height" multiplier="2:1" id="zQh-1B-AfG"/>
+                                </constraints>
                                 <connections>
                                     <action selector="onFlagBtnTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KXx-fL-5df"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTE-si-yQY">
-                                <rect key="frame" x="87.5" y="264" width="200" height="100"/>
-                                <state key="normal" backgroundImage="estonia"/>
+                                <rect key="frame" x="153.5" y="198" width="68" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bTE-si-yQY" secondAttribute="height" multiplier="2:1" id="QEg-t3-FIl"/>
+                                </constraints>
                                 <connections>
                                     <action selector="onFlagBtnTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PS4-VR-QlC"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNf-W8-34F">
-                                <rect key="frame" x="87.5" y="414" width="200" height="100"/>
-                                <state key="normal" backgroundImage="estonia"/>
+                                <rect key="frame" x="153.5" y="282" width="68" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="BNf-W8-34F" secondAttribute="height" multiplier="2:1" id="YXY-MV-I58"/>
+                                </constraints>
                                 <connections>
                                     <action selector="onFlagBtnTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QOr-Qy-fqP"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4OJ-Or-Bbc">
-                                <rect key="frame" x="187.5" y="564" width="0.0" height="0.0"/>
+                                <rect key="frame" x="187.5" y="366" width="0.0" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="rCO-vm-bsc"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -48,11 +57,14 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="4OJ-Or-Bbc" secondAttribute="bottom" constant="-10" id="0BW-c1-aGA"/>
                             <constraint firstItem="BNf-W8-34F" firstAttribute="top" secondItem="bTE-si-yQY" secondAttribute="bottom" constant="50" id="2HT-3r-o1b"/>
                             <constraint firstItem="4OJ-Or-Bbc" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="3Fp-iG-5h6"/>
                             <constraint firstItem="4OJ-Or-Bbc" firstAttribute="top" secondItem="BNf-W8-34F" secondAttribute="bottom" constant="50" id="7qN-rz-iVD"/>
                             <constraint firstItem="bTE-si-yQY" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="AF9-Lf-Ol9"/>
+                            <constraint firstItem="wRU-Tm-WC8" firstAttribute="height" secondItem="bTE-si-yQY" secondAttribute="height" id="ID2-IP-aik"/>
                             <constraint firstItem="wRU-Tm-WC8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="QPh-Wh-zhZ"/>
+                            <constraint firstItem="bTE-si-yQY" firstAttribute="height" secondItem="BNf-W8-34F" secondAttribute="height" id="Wd1-qI-GfV"/>
                             <constraint firstItem="bTE-si-yQY" firstAttribute="top" secondItem="wRU-Tm-WC8" secondAttribute="bottom" constant="50" id="d0H-58-wOX"/>
                             <constraint firstItem="wRU-Tm-WC8" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fZd-T9-72S"/>
                             <constraint firstItem="BNf-W8-34F" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="pMO-zZ-sK8"/>
@@ -90,7 +102,4 @@
             <point key="canvasLocation" x="201" y="27"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="estonia" width="200" height="100"/>
-    </resources>
 </document>
