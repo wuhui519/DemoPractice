@@ -16,6 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        if let tabVC = window?.rootViewController as? UITabBarController {
+            let story = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let recentVC = story.instantiateViewController(withIdentifier: "navController")
+            recentVC.tabBarItem = UITabBarItem(tabBarSystemItem: .mostRecent, tag: 0)
+            let topVC = story.instantiateViewController(withIdentifier: "navController")
+            topVC.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 1)
+            tabVC.viewControllers = [recentVC, topVC]
+        }
         return true
     }
 

@@ -20,7 +20,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Kc1-d7-JuY" kind="relationship" relationship="viewControllers" id="LVW-7h-gvz"/>
+                        <segue destination="Kc1-d7-JuY" kind="relationship" relationship="viewControllers" id="NAX-Nb-Gg6"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Jf-GF-4Ke" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -72,11 +72,11 @@
             </objects>
             <point key="canvasLocation" x="2650" y="133"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="nOF-Kt-DD1">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kc1-d7-JuY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="CFP-DK-4Ld"/>
+                <navigationController storyboardIdentifier="navController" automaticallyAdjustsScrollViewInsets="NO" id="Kc1-d7-JuY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" id="CFP-DK-4Ld"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Skt-fj-cFN">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
