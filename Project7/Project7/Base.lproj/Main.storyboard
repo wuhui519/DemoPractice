@@ -76,7 +76,7 @@
         <scene sceneID="nOF-Kt-DD1">
             <objects>
                 <navigationController storyboardIdentifier="navController" automaticallyAdjustsScrollViewInsets="NO" id="Kc1-d7-JuY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" id="CFP-DK-4Ld"/>
+                    <tabBarItem key="tabBarItem" title="" systemItem="mostRecent" id="CFP-DK-4Ld"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Skt-fj-cFN">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  Project7
+//  Project8
 //
-//  Created by Faye on 2018/11/29.
-//  Copyright © 2018 CMCC. All rights reserved.
+//  Created by Faye on 2018/12/2.
+//  Copyright © 2018 Faye. All rights reserved.
 //
 
 import UIKit
@@ -16,12 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        if let tabVC = window?.rootViewController as? UITabBarController {
-            let story = UIStoryboard(name: "Main", bundle: Bundle.main)
-            let topVC = story.instantiateViewController(withIdentifier: "navController")
-            topVC.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 1)
-            tabVC.viewControllers?.append(topVC)
-        }
         return true
     }
 

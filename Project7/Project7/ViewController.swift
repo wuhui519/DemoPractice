@@ -16,7 +16,7 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         tabTapped()
-        title = self.tabBarController?.selectedIndex == 0 ? "Most Recent" : "Top Rated"
+        title = self.navigationController?.tabBarItem.tag == 0 ? "Most Recent" : "Top Rated"
     }
     
     // MARK: - private
@@ -51,18 +51,38 @@ class ViewController: UITableViewController {
         let urlSession = URLSession.init(configuration: urlSessionConfig)
         let task = urlSession.dataTask(with: url) {[unowned self] (data, response, error) in
             if let d = data {
-                let json = try? JSONSerialization.jsonObject(with: d, options: [])
-                if let jsonMap = json as? [String: Any] {
-                    let ps = Petitions(json: jsonMap)
+                // 1. JSONSerialization way
+//                let json = try? JSONSerialization.jsonObject(with: d, options: [])
+//                if let jsonMap = json as? [String: Any] {
+//                    let ps = Petitions(json: jsonMap)
+//                    self.petitions = ps.results
+//                    DispatchQueue.main.async {
+//                        self.tableView.reloadData()
+//                        activityIndicator.stopAnimating()
+//                    }
+//                }
+                // 2. Codable way
+                let decoder = JSONDecoder()
+                if let ps = try? decoder.decode(Petitions.self, from: d) {
                     self.petitions = ps.results
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                         activityIndicator.stopAnimating()
                     }
+                    return
                 }
             }
+            self.showError()
         }
         task.resume()
+    }
+    
+    func showError() {
+        DispatchQueue.main.async {
+            let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(ac, animated: true)
+        }
     }
     
     // MARK: - tableview delegate
@@ -82,8 +102,7 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let petition = petitions[indexPath.row]
         let vc = DetailViewController()
-        vc.title = petition.title
-        vc.body = petition.body
+        vc.petition = petition
         navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -11,23 +11,33 @@ import WebKit
 
 class DetailViewController: UIViewController {
     
-    var webview: WKWebView?
-    var body: String?
+    var webview: WKWebView!
+    var petition: Petition?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         webview = WKWebView(frame: view.bounds)
-        self.view .addSubview(webview!)
-        if let aBody = body {
-            if let aTitle = title {
-                let string = "<html><body>" +
-                    "<h1>\(aTitle)</h1><h2>\(aBody)</h2>" +
-                "</body></html>";
-                webview?.loadHTMLString(string, baseURL: nil)
-            }
-        }
+        self.view.addSubview(webview!)
+        guard let petition = petition else { return }
+        title = petition.title
+//        let html = "<html><body>" +
+//            "<h1>\(petition.title)</h1><h2>\(petition.body)</h2>" +
+//        "</body></html>";
+        let html = """
+            <html>
+                <head>
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <style>body {font-size: 130%;}</style>
+                </head>
+                <body>
+                    <h2>\(petition.title)</h2>
+                    \(petition.body)
+                </body>
+            </html>
+        """
+        webview.loadHTMLString(html, baseURL: nil)
     }
     
 
