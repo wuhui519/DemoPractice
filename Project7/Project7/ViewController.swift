@@ -65,24 +65,24 @@ class ViewController: UITableViewController {
                 let decoder = JSONDecoder()
                 if let ps = try? decoder.decode(Petitions.self, from: d) {
                     self.petitions = ps.results
+//                    DispatchQueue.global(qos: .userInteractive).async {
+//                    }
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                         activityIndicator.stopAnimating()
                     }
-                    return
+//                    return
                 }
             }
-            self.showError()
+            self.performSelector(onMainThread: #selector(self.showError), with: nil, waitUntilDone: false)
         }
         task.resume()
     }
     
-    func showError() {
-        DispatchQueue.main.async {
-            let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(ac, animated: true)
-        }
+    @objc func showError() {
+        let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(ac, animated: true)
     }
     
     // MARK: - tableview delegate
