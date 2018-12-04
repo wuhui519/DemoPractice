@@ -67,6 +67,7 @@ class ViewController: UITableViewController {
                     self.petitions = ps.results
 //                    DispatchQueue.global(qos: .userInteractive).async {
 //                    }
+//                    self.tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false);
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                         activityIndicator.stopAnimating()
