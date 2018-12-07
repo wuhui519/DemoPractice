@@ -4,8 +4,6 @@ var str = "Hello, playground"
 let range = NSMakeRange(0, str.count)
 let range2 = NSRangeFromString(str)
 
-
-
 var array:[Any] = [1, 2, 3, 4, 5, "abc"]
 array[0]
 type(of: array)
@@ -82,7 +80,7 @@ let force = albumReleased(year: 2006)!
 print("force unwrapping optionals: \(force)")
 // optional chaining
 let chain = albumReleased(year: 2006)?.uppercased()
-print("optional chain: \(chain)")
+print("optional chain: \(chain!)")
 // nil coalescing operator
 let result = albumReleased(year: 2007) ?? "unkowon"
 print("nil coalescing: \(result.uppercased())")
@@ -105,7 +103,7 @@ func getHaterStatus(weather: WeatherType) -> String? {
     }
 }
 getHaterStatus(weather: .windy(speed: 3))
-`
+
 struct Person {
     var clothes: String
     var shoes: String
