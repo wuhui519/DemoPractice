@@ -40,31 +40,47 @@ let manager = UserManager()
 manager.models(matching: "lily") // [{name "sunny", age 25}]
  // [{name "lily", age 18}]
 
-
+func swapTwoValues<V>(_ a: inout V, _ b: inout V) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+var a = 1
+var b = 2
+swapTwoValues(&a, &b)
 
 
 
 protocol EmptyProtocol {
-    func showEmpty ()
-}
-extension EmptyProtocol {
-    func showEmpty() {
-        print("I'am empty")
-    }
+    associatedtype ClearView
+    func showEmpty(in view:ClearView)
 }
 
 class MyViewController: UIViewController {
 }
 extension MyViewController: EmptyProtocol {
+    typealias ClearView = UILabel
+    func showEmpty(in view: UILabel) {
+        view.text = "I am empty"
+    }
 }
 
 class MyTableViewController: UITableViewController {
 }
 extension MyTableViewController: EmptyProtocol {
+    typealias ClearView = UITableView
+    func showEmpty(in view: UITableView) {
+        view.reloadData()
+    }
 }
 
-let myvc = MyViewController()
-myvc.showEmpty()
+//let myVC = MyViewController()
+//let myTableVC = MyTableViewController()
+//let myVCArray:[EmptyProtocol] = [myVC, myTableVC]
+//print(type(of: myVCArray))    // Array<EmptyProtocol>
+//for vc in myVCArray {
+//    vc.showEmpty()            // print "I'am empty" twice
+//}
 
 
 
